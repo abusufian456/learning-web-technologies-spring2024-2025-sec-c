@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style2.css"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], 
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        .dob-fields {
+            display: flex;
+            gap: 5px;
+        }
+        .dob-fields input {
+            width: 60px;
+        }
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+        }
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        .page-info {
+            text-align: right;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>PERSON PROFILE</h1>
+    
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Date of Birth</label>
+            <div class="dob-fields">
+                <input type="text" placeholder="dd" maxlength="2" size="2"> /
+                <input type="text" placeholder="mm" maxlength="2" size="2"> /
+                <input type="text" placeholder="yyyy" maxlength="4" size="4">
+                <span style="margin-left: 5px;">(dd/mm/yyyy)</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="blood-group">Blood Group</label>
+            <input type="text" id="blood-group" name="blood-group" value=" ">
+        </div>
+        
+        <div class="form-group">
+            <label>Degree</label>
+            <div class="checkbox-group">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="ssc" name="degree" value="SSC">
+                    <label for="ssc">SSC</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="hsc" name="degree" value="HSC">
+                    <label for="hsc">HSC</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="bsc" name="degree" value="BSc">
+                    <label for="bsc">BSc.</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="msc" name="degree" value="MSc">
+                    <label for="msc">MSc.</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="file" id="photo" name="photo">
+            <span>No file selected.</span>
+        </div>
+        
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+    
+    <div class="page-info">3/3</div>
+</body>
+</html>
