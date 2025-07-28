@@ -1,0 +1,287 @@
+<html>
+<head>
+<title>JS Example</title>
+</head>
+<body>
+<h1>Login Page</h1>
+<form method="post" action="abc.html" enctype="multipart/form-data" onsubmit="return loginCheck()">
+<fieldset>
+
+            Username:   <input type="text" name="username" value="" id="username" onblur="checkUsername()" >
+<p id="uError"></p>
+
+            Password:   <input type="password" name="password" value="" id="password" onblur="checkPassword()" >
+             <p id="pError"></p>
+             <vr></vr>
+              Email: <input type="text" name="Email ID" value="" onblur="checkPassword()">
+              <vr></vr>
+              <fieldset>
+             <e id="eError"></e>
+             <form id="checkboxForm">
+           <input type="checkbox" name="option" value="1"> Option 1<br>
+           <input type="checkbox" name="option" value="2"> Option 2<br>
+           <input type="checkbox" name="option" value="3"> Option 3<br>
+           <button type="button" onclick="validateCheckbox()">Submit</button>
+           <button type="button" onclick="validateCheckbox()">clear</button>
+            <e id="eError"></e>
+            <input type="submit" name="" value="Submit">
+            <form id="dateForm">
+         <vr>
+            Date (dd/mm/yyyy): <input type="text" id="date" />
+            <button type="button" onclick="validateDate()">Submit</button>
+            </vr>
+            <vr>
+                <form id="selectForm">
+     <select id="country">
+     <option value="">Select Country</option>
+     <option value="us">USA</option>
+     <option value="uk">UK</option>
+     </select>
+      <button type="button" onclick="validateSelect()">Submit</button>
+            </vr>
+            <form id="uploadForm">
+  UserID: <input type="number" id="userId"><br>
+  Picture: <input type="file" id="picture"><br>
+  <button type="button" onclick="validateUpload()">Submit</button>
+        
+
+
+</fieldset>
+</form>
+ 
+        <script>
+
+        
+
+           
+
+            let name = "alamin";
+
+            let cgpa = 4.00;
+
+            let id = 1234;
+
+            
+
+            let std = [1, 'alamin', 3.5, 'alamin@aiub.edu'];
+
+            let email = std[3];
+ 
+            function abc(a=0, b=0){
+
+                return a+b;
+
+            }
+
+            abc();
+
+            let f1 = function(a, b){
+
+                return a+b;
+
+            }
+
+            f1();
+
+            let f2 = (a,b)=>a+b;
+ 
+            for(let a=0; a<10; a++){
+ 
+            }
+ 
+            // if("10" == 10){
+ 
+            // }else if(){
+
+            // }else{
+ 
+            // }
+ 
+            //console.log('testing form JS');
+
+            //alert('test');
+
+            //document.write('test from JS');
+ 
+            let username = "";
+
+            let password = "";
+
+            let uError = document.getElementById('uError');
+
+            let pError = document.getElementById('pError');
+ 
+            function checkUsername(){
+
+                username = document.getElementById('username').value;
+
+                if(username == ""){
+
+                    uError.innerHTML = "please type username first!"
+
+                    uError.style.color = 'red';     
+
+                }else{
+
+                    uError.innerHTML = "";
+
+                }
+
+            }
+ 
+            function checkPassword(){
+
+                password = document.getElementById('password').value;
+
+                if(password == ""){
+
+                    pError.innerHTML = "please type password first!"
+
+                    pError.style.color = 'red';
+
+                }else{
+
+                    pError.innerHTML = "";
+
+                }
+
+            }
+          function validateEmail() {
+          const email = document.getElementById('email').value.trim();
+         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         if (email === '') {
+          alert('Email cannot be empty');
+          } else if (!regex.test(email)) {
+          alert('Invalid email address');
+         } else {
+         
+  }
+}
+function validateCheckbox() {
+  const options = document.querySelectorAll('input[name="option"]:checked');
+  if (options.length === 0) {
+    alert('At least one option must be selected');
+  } else {
+    alert('Valid selection');
+  }
+}
+function validateSelect() {
+  const val = document.getElementById('country').value;
+  if (val === '') {
+    alert('Please select a country');
+  } else {
+    alert('Selection valid');
+  }
+}
+function validateUpload() {
+  const userId = document.getElementById('userId').value;
+  const picture = document.getElementById('picture').files.length;
+  if (!userId || userId <= 0) {
+    alert('UserID must be a positive number');
+  } else if (picture === 0) {
+    alert('Please upload a picture');
+  } else {
+    alert('Upload valid');
+  }
+}
+ 
+            function loginCheck(){
+
+                if(username != "" && password != ""  && Email != ""){
+
+                    if(username == password == Email){
+
+                        alert('valid user!')
+
+                        return true;
+
+                    }else{
+
+                        //alert('invalid user!');
+
+                        let successMsg = document.getElementById('success');
+
+                        successMsg.innerHTML = "please type valid username or password and also valid email!";
+
+                        successMsg.style.color = 'red';
+
+                        return false
+
+                    }
+
+                }else{
+
+                    checkPassword();
+
+                    checkUsername();
+                    checkEmail();
+
+                    return false;
+
+                }
+ 
+            }
+             function validateDate() {
+              const date = document.getElementById('date').value.trim();
+              const regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+              const match = regex.exec(date);
+              if (!match) {
+              alert('Invalid date format');
+              return;
+             }
+              const dd = parseInt(match[1]);
+             const mm = parseInt(match[2]);
+             const yyyy = parseInt(match[3]);
+             if (dd < 0 || dd > 31 || mm < 1 || mm > 12 || yyyy < 1900 || yyyy > 2016) {
+              alert('Invalid date range');
+             } else {
+              alert('Valid date');
+             }
+            }
+            function change(){
+
+                let username = document.getElementById('username').value;
+
+                if(username == ""){
+
+                    document.getElementById('msg').innerHTML = "please type username first!";
+
+                    document.getElementById('msg').style.color = 'red';
+
+                }else{
+
+                    let head = document.getElementsByTagName('h1')[0];
+
+                    head.innerHTML = username;
+
+                    document.getElementById('msg').innerHTML = "";
+
+                }
+
+            }
+             function change1(){
+
+                let EmailID = document.getElementById('enter your email').value;
+
+                if(EmailID == ""){
+
+                    document.getElementById('msg').innerHTML = "please type your email first!";
+
+                    document.getElementById('msg').style.color = 'red';
+
+                }else{
+
+                    let head = document.getElementsByTagName('h1')[0];
+
+                    head.innerHTML =EmailID;
+
+                    document.getElementById('msg').innerHTML = "";
+                }
+            }
+          
+
+            
+</script>
+</body>
+</html>
+ 
