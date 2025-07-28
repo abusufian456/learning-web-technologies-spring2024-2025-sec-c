@@ -1,0 +1,199 @@
+<html>
+<head>
+    <title>JS Example</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    
+   
+    <form method="post" action="abc.html" enctype="multipart/form-data" onsubmit="return loginCheck()">
+        <fieldset>
+            Username: <input type="text" name="username" value="" id="username" onblur="checkUsername()">
+            <p id="uError"></p>
+
+            Password: <input type="password" name="password" value="" id="password" onblur="checkPassword()">
+            <p id="pError"></p>
+
+            Email: <input type="email" name="email" value="" id="email" onblur="checkEmail()">
+            <p id="eError"></p>
+            
+            <input type="submit" value="Login">
+        </fieldset>
+    </form>
+
+    <fieldset>
+        <form id="checkboxForm">
+            <input type="checkbox" name="option" value="1"> Option 1<br>
+            <input type="checkbox" name="option" value="2"> Option 2<br>
+            <input type="checkbox" name="option" value="3"> Option 3<br>
+            <button type="button" onclick="validateCheckbox()">Submit</button>
+            <button type="button" onclick="clearCheckbox()">Clear</button>
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <form id="dateForm">
+            Date (dd/mm/yyyy): <input type="text" id="date">
+            <button type="button" onclick="validateDate()">Submit</button>
+        </form>
+    </fieldset>
+
+   
+    <fieldset>
+        <form id="selectForm">
+            <select id="country">
+                <option value="">Select Country</option>
+                <option value="us">USA</option>
+                <option value="uk">UK</option>
+            </select>
+            <button type="button" onclick="validateSelect()">Submit</button>
+        </form>
+    </fieldset>
+
+ 
+    <fieldset>
+        <form id="uploadForm">
+            UserID: <input type="number" id="userId"><br>
+            Picture: <input type="file" id="picture"><br>
+            <button type="button" onclick="validateUpload()">Submit</button>
+        </form>
+    </fieldset>
+
+    <script>
+        
+        let username = "";
+        let password = "";
+        let email = "";
+
+        const uError = document.getElementById('uError');
+        const pError = document.getElementById('pError');
+        const eError = document.getElementById('eError');
+
+        
+        function checkUsername() {
+            username = document.getElementById('username').value.trim();
+            if (username === "") {
+                uError.innerHTML = "Please type username first!";
+                uError.style.color = 'red';
+                return false;
+            } else {
+                uError.innerHTML = "";
+                return true;
+            }
+        }
+
+        function checkPassword() {
+            password = document.getElementById('password').value.trim();
+            if (password === "") {
+                pError.innerHTML = "Please type password first!";
+                pError.style.color = 'red';
+                return false;
+            } else {
+                pError.innerHTML = "";
+                return true;
+            }
+        }
+
+        function checkEmail() {
+            email = document.getElementById('email').value.trim();
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email === "") {
+                eError.innerHTML = "Please type email first!";
+                eError.style.color = 'red';
+                return false;
+            } else if (!regex.test(email)) {
+                eError.innerHTML = "Invalid email address";
+                eError.style.color = 'red';
+                return false;
+            } else {
+                eError.innerHTML = "";
+                return true;
+            }
+        }
+
+        function loginCheck() {
+            const isUsernameValid = checkUsername();
+            const isPasswordValid = checkPassword();
+            const isEmailValid = checkEmail();
+
+            if (isUsernameValid && isPasswordValid && isEmailValid) {
+                // Here you would typically validate against server/database
+                alert('Form is valid!');
+                return true;
+            } else {
+                alert('Please fill all fields correctly!');
+                return false;
+            }
+        }
+
+        function validateCheckbox() {
+            const options = document.querySelectorAll('input[name="option"]:checked');
+            if (options.length === 0) {
+                alert('At least one option must be selected');
+                return false;
+            } else {
+                alert('Valid selection');
+                return true;
+            }
+        }
+
+        function clearCheckbox() {
+            const checkboxes = document.querySelectorAll('input[name="option"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        }
+
+        function validateDate() {
+            const date = document.getElementById('date').value.trim();
+            const regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+            const match = regex.exec(date);
+            
+            if (!match) {
+                alert('Invalid date format (use dd/mm/yyyy)');
+                return false;
+            }
+            
+            const dd = parseInt(match[1], 10);
+            const mm = parseInt(match[2], 10);
+            const yyyy = parseInt(match[3], 10);
+            
+            if (dd < 1 || dd > 31 || mm < 1 || mm > 12 || yyyy < 1900 || yyyy > new Date().getFullYear()) {
+                alert('Invalid date range');
+                return false;
+            } else {
+                alert('Valid date');
+                return true;
+            }
+        }
+
+        function validateSelect() {
+            const val = document.getElementById('country').value;
+            if (val === '') {
+                alert('Please select a country');
+                return false;
+            } else {
+                alert('Selection valid');
+                return true;
+            }
+        }
+
+        function validateUpload() {
+            const userId = document.getElementById('userId').value;
+            const picture = document.getElementById('picture').files.length;
+            
+            if (!userId || isNaN(userId) || userId <= 0) {
+                alert('UserID must be a positive number');
+                return false;
+            } else if (picture === 0) {
+                alert('Please upload a picture');
+                return false;
+            } else {
+                alert('Upload valid');
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
