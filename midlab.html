@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Job Portal Role-Based Access Demo</title>
+<link rel="stylesheet" href="midlab.css" />
+</head>
+<body>
+
+<h1>Job Portal Role-Based Access Demo</h1>
+
+<div class="login-section" id="loginSection">
+  <label for="roleSelect">Select your role to login:</label>
+  <select id="roleSelect">
+    <option value="" disabled selected>Select role</option>
+    <option value="admin">Admin</option>
+    <option value="recruiter">Recruiter</option>
+    <option value="candidate">Candidate</option>
+    <option value="visitor">visitor</option>
+  </select>
+  <button id="loginBtn">Login</button>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <h2>Dashboard</h2>
+  <div id="adminSection" class="role-section" style="display:none;">
+    <h3>Admin Panel</h3>
+    <p>Manage users, jobs, and site settings here.</p>
+  </div>
+
+  <div id="recruiterSection" class="role-section" style="display:none;">
+    <h3>Recruiter Dashboard</h3>
+    <p>Post jobs and view applicants here.</p>
+  </div>
+
+  <div id="candidateSection" class="role-section" style="display:none;">
+    <h3>Candidate Profile</h3>
+    <p>Browse jobs and manage your applications here.</p>
+  </div>
+ <div id="visitorSection" class="role-section" style="display:none;">
+    <h3>visitor Profile</h3>
+    <p>Welcome to our website! We're thrilled to have you here.</p>
+  </div>
+  <button id="logoutBtn" class="logout-btn">Logout</button>
+</div>
+
+<script src="midlab.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 4rem;
+  background-color: #659150ce;
+}
+
+h1 {
+  color: #333;
+}
+
+.login-section, .dashboard {
+  background: rgb(177, 126, 126);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+  max-width: 400px;
+}
+
+label, select, button {
+  display: block;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+select, button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.dashboard {
+  display: none;
+}
+
+.role-section {
+  margin-top: 1rem;
+}
+
+.logout-btn {
+  background: #cc7370;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.logout-btn:hover {
+  background: #c9302c;
+}
